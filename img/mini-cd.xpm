@@ -1,0 +1,23 @@
+/* XPM */
+static char *mini-cd[] = {
+/* width height num_colors chars_per_pixel */
+"     8     8        8            1",
+/* colors */
+". c None",
+"# c #808080",
+"a c #ffff00",
+"b c #c0c0c0",
+"c c #000000",
+"d c #00ffff",
+"e c #00ff00",
+"f c #ffffff",
+/* pixels */
+"...##...",
+".#aabbc.",
+".edabfb.",
+"#be##bbc",
+"#bb##bbc",
+".bbbedb.",
+".#bbeac.",
+"...#c..."
+};

@@ -1,0 +1,528 @@
+
+src/Game.cpp,1699
+static char cvsid[2,22
+static char debugFileId[3,56
+class Refresh Refresh32,662
+public: Refresh(Refresh::Refresh34,719
+public: virtual void *run(Refresh::run38,773
+Game::Game(52,1000
+Game::~Game(186,3986
+void Game::initCursesGraphics(241,5014
+void Game::initCursesGlyphs(263,5643
+void Game::initX11Graphics(302,6974
+void Game::initX11Glyphs(433,10811
+static COLORREF rgbFromString(531,13779
+void Game::initWindowsGraphics(550,14143
+void Game::initWindowsGlyphs(675,17516
+Board *Game::getBoard(710,19327
+BoardMap *Game::getMap(715,19378
+Aq::Drawable *Game::getPixmap(720,19428
+Aq::Window *Game::getWindow(725,19485
+Game::State Game::getState(730,19543
+Game::State Game::getStateFast(736,19638
+void Game::setState(741,19698
+boolean Game::isPaused(747,19793
+void Game::flipPause(752,19846
+void Game::drawCell(757,19894
+void Game::update(771,20298
+Player *Game::getPlayer(777,20410
+Keyboard *Game::getKeyboard(782,20464
+Xq::GC *Game::getGC(789,20553
+Xq::GC *Game::getClearGC(794,20599
+Xq::Display *Game::getDisplay(799,20653
+Xq::Color *Game::getBg(804,20714
+Xq::Color *Game::getFg(809,20763
+Xq::Drawable *Game::getXPixmap(814,20812
+Xq::Window *Game::getXWindow(819,20870
+int Game::getLives(827,20938
+void Game::incLives(832,20986
+List *Game::getBombs(837,21046
+List *Game::getObjects(842,21096
+List *Game::getThreads(847,21150
+void Game::stop(852,21204
+void Game::start(883,21735
+void Game::reset(918,22414
+Index Game::getScore(941,22861
+void Game::incScore(946,22911
+String Game::getStats(956,23063
+List *Game::getMovingObjects(1032,26087
+Index Game::getMilliseconds(1039,26224
+char *Game::getUserName(1082,27296
+void Game::makeScreenShot(1105,27705
+
+src/Board.cpp,484
+static char cvsid[2,22
+static char debugFileId[3,56
+Board::Board(10,164
+Board::~Board(24,542
+Index Board::getHeight(29,580
+Index Board::getWidth(34,633
+boolean Board::isValidRow(39,684
+boolean Board::isValidCol(44,789
+void Board::clean(49,893
+Cell::State Board::getState(89,1645
+void Board::setState(97,1818
+void Board::getCellInfo(119,2305
+void Board::updateCellInfo(134,2647
+String Board::toString(156,3158
+Index Board::getFilled(174,3509
+void Board::reset(179,3562
+
+src/Cell.cpp,80
+static char cvsid[2,22
+static char debugFileId[3,56
+char Cell::getChar(8,123
+
+src/BoardMap.cpp,450
+static char cvsid[2,22
+static char debugFileId[3,56
+BoardMap::BoardMap(10,169
+BoardMap::~BoardMap(30,565
+Index BoardMap::getCWidth(39,699
+Index BoardMap::getCHeight(46,785
+Index BoardMap::getWidth(53,873
+Index BoardMap::getHeight(60,991
+Board *BoardMap::getBoard(67,1112
+void BoardMap::drawCell(74,1198
+void BoardMap::draw(114,2196
+Index BoardMap::getAscent(129,2424
+void BoardMap::setGlyph(134,2480
+XGlyph *BoardMap::getGlyph(154,2939
+
+src/ACursor.cpp,309
+static char cvsid[2,22
+static char debugFileId[3,56
+ACursor::ACursor(10,172
+ACursor::~ACursor(103,2896
+HandlerResult ACursor::fire(132,3327
+void ACursor::sync(142,3534
+void ACursor::setCursor(148,3614
+boolean ACursor::iteration(190,4327
+void ACursor::reset(196,4391
+Index ACursor::getDelay(201,4427
+
+src/FrameFeeder.cpp,192
+static char cvsid[2,22
+static char debugFileId[3,56
+FrameFeeder::FrameFeeder(8,130
+FrameFeeder::~FrameFeeder(34,632
+HandlerResult FrameFeeder::fire(40,703
+void FrameFeeder::sync(58,1144
+
+src/BombThread.cpp,436
+static char cvsid[2,22
+static char debugFileId[3,56
+BombThread::BombThread(15,261
+BombThread::~BombThread(19,327
+void BombThread::init(22,357
+void BombThread::findSafe(28,422
+void BombThread::initDXY(57,1149
+boolean BombThread::isClinamenable(63,1265
+boolean BombThread::iteration(68,1328
+Index BombThread::getDelay(132,2826
+CoordX BombThread::getX(137,2903
+CoordY BombThread::getY(142,2952
+void BombThread::reset(147,3001
+
+src/Keyboard.cpp,273
+static char cvsid[2,22
+static char debugFileId[3,56
+Keyboard::Keyboard(16,276
+Keyboard::~Keyboard(27,469
+HandlerResult Keyboard::fire(30,495
+void Keyboard::onKeyEvent(243,4576
+int Keyboard::getDx(246,4624
+int Keyboard::getDy(251,4664
+void Keyboard::reset(256,4704
+
+src/Player.cpp,500
+static char cvsid[2,22
+static char debugFileId[3,56
+Player::Player(17,305
+Player::~Player(47,981
+boolean Player::iteration(59,1149
+HandlerResult Player::fire(182,3297
+HandlerResult Player::firePost(246,4916
+void Player::reset(265,5349
+void Player::safePlace(273,5490
+Index Player::getDelay(295,5997
+int Player::getX(300,6072
+int Player::getY(305,6114
+List *Player::getPath(310,6156
+void Player::buildPath(316,6231
+Cell::State Player::getState(369,7165
+void Player::addToPath(374,7261
+
+src/IBombThread.cpp,283
+static char cvsid[2,22
+static char debugFileId[3,56
+IBombThread::IBombThread(11,171
+IBombThread::~IBombThread(17,254
+Cell::State IBombThread::getMyState(20,286
+boolean IBombThread::isAllowed(25,357
+void IBombThread::process(30,505
+boolean IBombThread::affectsClipping(39,674
+
+src/OBombThread.cpp,283
+static char cvsid[2,22
+static char debugFileId[3,56
+OBombThread::OBombThread(11,171
+OBombThread::~OBombThread(17,254
+Cell::State OBombThread::getMyState(20,286
+boolean OBombThread::isAllowed(25,357
+void OBombThread::process(30,471
+boolean OBombThread::affectsClipping(39,672
+
+src/XBombThread.cpp,238
+static char cvsid[2,22
+static char debugFileId[3,56
+XBombThread::XBombThread(11,171
+XBombThread::~XBombThread(17,255
+Cell::State XBombThread::getMyState(20,287
+boolean XBombThread::isAllowed(25,358
+void XBombThread::process(32,544
+
+src/SBombThread.cpp,243
+static char cvsid[2,22
+static char debugFileId[3,56
+SBombThread::SBombThread(15,262
+SBombThread::~SBombThread(19,331
+Cell::State SBombThread::getMyState(22,363
+void SBombThread::initDXY(27,434
+boolean SBombThread::isClinamenable(41,563
+
+src/StatusLine.cpp,191
+static char cvsid[2,22
+static char debugFileId[3,56
+StatusLine::StatusLine(12,221
+StatusLine::~StatusLine(16,300
+boolean StatusLine::iteration(19,330
+Index StatusLine::getDelay(68,1627
+
+src/SClipper.cpp,1207
+static char cvsid[2,22
+static char debugFileId[3,56
+#define SGN(SGN16,287
+SClipper::SClipper(18,358
+SClipper::~SClipper(24,432
+HandlerResult SClipper::fire(29,478
+void SClipper::addPath(60,1382
+void SClipper::clip(104,2637
+List *SClipper::getCycles(180,4433
+String SClipper::toString(185,4489
+void SClipper::reset(191,4595
+Cycle::Cycle(222,5517
+Cycle::Cycle(230,5662
+Cycle::~Cycle(239,5831
+boolean Cycle::isMarked(244,5873
+void Cycle::setMark(249,5925
+void Cycle::add(254,5983
+boolean Cycle::split(306,7221
+Cycle *Cycle::buildSplit(419,10463
+void Cycle::normalize(483,12406
+Segment *Cycle::getLast(525,13348
+Segment *Cycle::getNext(532,13520
+Segment *Cycle::getPrev(547,13849
+Segment *Cycle::contains(561,14104
+List *Cycle::getSegments(580,14481
+boolean Cycle::round(585,14538
+String Cycle::toString(608,14971
+Segment::Segment(614,15083
+boolean Segment::contains(623,15238
+Index Segment::fill(643,15750
+String Segment::toString(673,16416
+CoordX Segment::getMinX(679,16563
+CoordY Segment::getMinY(684,16632
+CoordX Segment::getMaxX(689,16701
+CoordY Segment::getMaxY(694,16770
+void Segment::swap(699,16839
+Top *Segment::clone(714,16964
+boolean Segment::isEmpty(724,17118
+
+src/Geom.cpp,484
+static char cvsid[2,22
+static char debugFileId[3,56
+Point::Point(8,123
+Point::Point(14,193
+Point::~Point(20,284
+CoordX Point::getX(23,304
+CoordY Point::getY(28,348
+Coord  Point::get(33,392
+void Point::setX(47,551
+void Point::setY(52,596
+void Point::set(57,641
+XVector::XVector(72,837
+XVector::XVector(76,902
+XVector::XVector(81,1059
+XVector::~XVector(85,1123
+Point &XVector::getEndPoint(88,1147
+int XVector::scalarProduct(93,1196
+int XVector::vectorProduct(100,1367
+
+src/FontGlyph.cpp,208
+static char cvsid[2,22
+static char debugFileId[3,56
+FontGlyph::FontGlyph(9,148
+FontGlyph::~FontGlyph(20,353
+void FontGlyph::draw(26,419
+int FontGlyph::getWidth(60,1189
+int FontGlyph::getHeight(65,1239
+
+src/PixmapGlyph.cpp,225
+static char cvsid[2,22
+static char debugFileId[3,56
+PixmapGlyph::PixmapGlyph(12,180
+PixmapGlyph::~PixmapGlyph(63,1301
+void PixmapGlyph::draw(69,1370
+int PixmapGlyph::getWidth(80,1653
+int PixmapGlyph::getHeight(87,1755
+
+src/BitmapGlyph.cpp,221
+static char cvsid[2,22
+static char debugFileId[3,56
+BitmapGlyph::BitmapGlyph(10,151
+BitmapGlyph::~BitmapGlyph(23,417
+void BitmapGlyph::draw(29,486
+int BitmapGlyph::getWidth(39,718
+int BitmapGlyph::getHeight(44,777
+
+src/AnimGlyph.cpp,212
+static char cvsid[2,22
+static char debugFileId[3,56
+AnimGlyph::AnimGlyph(10,149
+AnimGlyph::~AnimGlyph(70,1505
+void AnimGlyph::draw(77,1589
+int AnimGlyph::getWidth(95,2017
+int AnimGlyph::getHeight(100,2070
+
+src/GameObject.cpp,211
+static char cvsid[2,22
+static char debugFileId[3,56
+GameObject::GameObject(9,149
+GameObject::~GameObject(17,253
+void GameObject::init(22,301
+void GameObject::reset(27,377
+Game *GameObject::getGame(30,406
+
+src/GameThread.cpp,245
+static char cvsid[2,22
+static char debugFileId[3,56
+GameThread::GameThread(9,149
+GameThread::~GameThread(22,376
+void GameThread::start(27,427
+void GameThread::stop(32,500
+void *GameThread::run(40,589
+Thread *GameThread::getThread(59,933
+
+src/GameConfig.cpp,218
+static char cvsid[2,22
+static char debugFileId[3,56
+GameConfig::GameConfig(9,151
+GameConfig::GameConfig(78,1308
+GameConfig::~GameConfig(146,3179
+void GameConfig::init(151,3231
+String GameConfig::usage(372,12014
+
+src/GameManager.cpp,156
+static char cvsid[2,22
+static char debugFileId[3,56
+GameManager::GameManager(18,349
+void GameManager::manage(21,380
+GameManager::~GameManager(142,3548
+
+src/GameScheduler.cpp,162
+static char cvsid[2,22
+static char debugFileId[3,56
+GameScheduler::GameScheduler(10,178
+GameScheduler::~GameScheduler(19,357
+void *GameScheduler::run(25,431
+
+src/Option.cpp,873
+static char cvsid[2,22
+static char debugFileId[3,56
+Option::Option(10,146
+Option::~Option(22,357
+boolean Option::isPresent(25,379
+boolean Option::isMatched(30,434
+String Option::getEnvName(35,517
+boolean Option::parse(40,570
+String Option::getString(104,1926
+String Option::getUsageString(109,2042
+SingleOption::SingleOption(114,2115
+void SingleOption::pullArgs(124,2350
+void SingleOption::pullEnv(132,2445
+IntOption::IntOption(140,2533
+void IntOption::pullArgs(158,2924
+void IntOption::pullEnv(178,3308
+Index IntOption::getIntArg(184,3397
+String IntOption::getUsageString(189,3453
+void IntOption::process(194,3543
+StringOption::StringOption(215,3816
+void StringOption::pullArgs(225,4050
+void StringOption::pullEnv(242,4393
+String StringOption::getStringArg(248,4473
+String StringOption::getUsageString(253,4536
+void StringOption::process(258,4629
+
+src/TopFile.cpp,327
+static char cvsid[2,22
+static char debugFileId[3,56
+TopFile::TopFile(8,126
+TopFile::~TopFile(19,311
+TopFile::TopEntry::TopEntry(24,354
+TopFile::TopEntry::~TopEntry(31,501
+TopFile::TopEntry *TopFile::nextEntry(36,556
+void TopFile::addEntry(57,1291
+TopFile *TopFile::create(86,2404
+const char *TopFile::format 101,2719
+
+inc/Game.hpp,78
+#define __GAME_HPP__2,29
+#define XONIX_USE_WQ13,171
+class Game Game38,504
+
+inc/Board.hpp,170
+#define __BOARD_HPP__2,30
+#define FOR_ROWS(FOR_ROWS10,144
+#define FOR_COLS(FOR_COLS13,234
+class Board Board17,335
+public: Index getHeight(Board::getHeight24,494
+
+inc/Cell.hpp,70
+#define __CELL_HPP__2,29
+class Cell Cell6,75
+} State;State20,250
+
+inc/BoardMap.hpp,114
+#define __BOARDMAP_HPP__2,33
+class BoardMap BoardMap10,139
+public: XGlyph *getGlyph(BoardMap::getGlyph17,366
+
+inc/ACursor.hpp,95
+#define __ACURSOR_HPP__2,32
+class ACursor ACursor10,140
+#define COLORS_IN_SPECTRUM 43,1044
+
+inc/FrameFeeder.hpp,70
+#define __FRAMEFEEDER_HPP__2,36
+class FrameFeeder FrameFeeder8,116
+
+inc/BombThread.hpp,143
+#define __BOMB_THREAD_HPP__2,36
+class BombThread BombThread13,197
+public: virtual boolean isClinamenable(BombThread::isClinamenable22,399
+
+inc/Keyboard.hpp,61
+#define __KEYBOARD_HPP__2,33
+class Keyboard Keyboard9,122
+
+inc/Player.hpp,56
+#define __PLAYER_HPP__2,31
+class Player Player11,154
+
+inc/IBombThread.hpp,133
+#define __IBOMBTHREAD_HPP__2,36
+class IBombThread IBombThread8,116
+public: Cell::State getMyState(IBombThread::getMyState13,226
+
+inc/OBombThread.hpp,133
+#define __OBOMBTHREAD_HPP__2,36
+class OBombThread OBombThread8,116
+public: Cell::State getMyState(OBombThread::getMyState13,226
+
+inc/XBombThread.hpp,133
+#define __XBOMBTHREAD_HPP__2,36
+class XBombThread XBombThread8,117
+public: Cell::State getMyState(XBombThread::getMyState13,228
+
+inc/SBombThread.hpp,134
+#define __SBOMBTHREAD_HPP__2,36
+class SBombThread SBombThread11,183
+public: Cell::State getMyState(SBombThread::getMyState16,294
+
+inc/StatusLine.hpp,67
+#define __STATUSLINE_HPP__2,35
+class StatusLine StatusLine9,134
+
+inc/SClipper.hpp,279
+#define __SCLIPPER_HPP__2,33
+class SClipper SClipper13,193
+public: List *getCycles(SClipper::getCycles25,494
+class Cycle Cycle34,630
+public: boolean isMarked(Cycle::isMarked40,778
+class Segment Segment68,1573
+public: virtual String toString(Segment::toString78,1824
+
+inc/Geom.hpp,188
+#define __GEOM_HPP__2,29
+typedef short int Coord;Coord6,75
+typedef Coord CoordX;CoordX7,100
+typedef Coord CoordY;CoordY8,122
+class Point Point10,145
+class XVector XVector29,574
+
+inc/XGlyph.hpp,119
+#define __XGLYPH_HPP__2,31
+abstract class XGlyph XGlyph11,157
+public: virtual int getWidth(XGlyph::getWidth16,330
+
+inc/FontGlyph.hpp,112
+#define __FONTGLYPH_HPP__2,34
+class FontGlyph FontGlyph6,84
+public: int getWidth(FontGlyph::getWidth15,332
+
+inc/PixmapGlyph.hpp,71
+#define __PIXMAPGLYPH_HPP__2,36
+class PixmapGlyph PixmapGlyph10,138
+
+inc/BitmapGlyph.hpp,121
+#define __BITMAPGLYPH_HPP__2,36
+class BitmapGlyph BitmapGlyph8,109
+public: int getWidth(BitmapGlyph::getWidth18,403
+
+inc/AnimGlyph.hpp,114
+#define __ANIMPGLYPH_HPP__2,35
+class AnimGlyph AnimGlyph8,107
+public: int getWidth(AnimGlyph::getWidth19,384
+
+inc/GameObject.hpp,117
+#define __GAMEOBJECT_HPP__2,35
+class GameObject GameObject9,120
+public: Game *getGame(GameObject::getGame17,290
+
+inc/GameThread.hpp,122
+#define __GAMETHREAD_HPP__2,35
+class GameThread GameThread6,90
+public: Thread *getThread(GameThread::getThread23,477
+
+inc/GameConfig.hpp,113
+#define __GAMECONFIG_HPP__2,35
+class GameConfig GameConfig6,87
+public: String usage(GameConfig::usage13,268
+
+inc/GameManager.hpp,70
+#define __GAMEMANAGER_HPP__2,36
+class GameManager GameManager7,101
+
+inc/GameScheduler.hpp,153
+#define __GAMESCHEDULER_HPP__2,38
+#define BIG_YEAR_SHIFT 6,93
+#define BIG_YEAR 7,118
+#define BILLION 8,165
+class GameScheduler GameScheduler11,212
+
+inc/Option.hpp,340
+#define __OPTION_HPP__2,31
+class Option Option6,79
+public: boolean isPresent(Option::isPresent14,251
+class SingleOption SingleOption35,756
+class IntOption IntOption48,1073
+public: Index getIntArg(IntOption::getIntArg62,1446
+class StringOption StringOption76,1701
+public: String getStringArg(StringOption::getStringArg86,1986
+
+inc/TopFile.hpp,134
+#define __TOPFILE_HPP__2,32
+class TopFile TopFile10,147
+protected: static const char *format;30,606
+protected: FILE *file;31,644

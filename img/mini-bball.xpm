@@ -1,0 +1,16 @@
+/* XPM */
+static char * mini-rball_xpm[] = {
+"8 8 4 1",
+" 	c None s None",
+".	c blue",
+"X	c white",
+"o	c #808080",
+"        ",
+"  ...   ",
+" .XX..  ",
+" .XX..o ",
+" .....o ",
+"  ...oo ",
+"   ooo  ",
+"        "
+};
