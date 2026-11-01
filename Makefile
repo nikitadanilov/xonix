@@ -30,18 +30,19 @@
   #                                                                         #
   ###########################################################################
 
-QHOME=/home/nikita/projects/quercus-0.0.4
+QHOME?=$(HOME)/p/quercus/quercus-0.0.4
 
-CC=cc
-CPP=cc
+CC=gcc
+CPP=g++
 DEFINES=#-D_REENTRANT #-D_THREAD_SAFE -D__USE_REENTRANT
-COPT=-pthread #-fno-inline-functions -fno-vtable-thunks -fkeep-inline-functions 
+COPT=-pthread -std=gnu++11 -fpermissive #-fno-inline-functions -fno-vtable-thunks -fkeep-inline-functions 
 PROFOPT=-g #-pg
 LIBS=-L/usr/X11/lib -L$(LIB_DIR) -L$(QHOME)/lib \
-	-lbfd -liberty -lm -lXpm -lX11 -lstdc++ -ldl -lreadline -lncurses #-lgc # -lposix4 -lQRBase -lQRExceptions	-lQRIter -lQRContainers	-lQRContainersMisc -lQRList -lQRObserve -lQRAlgorithms -lQRPlatform -lQRThreads -lQRXq -lquercus
+	-lm -lXpm -lX11 -ldl -lreadline -lncurses #-lgc # -lposix4 -lQRBase -lQRExceptions	-lQRIter -lQRContainers	-lQRContainersMisc -lQRList -lQRObserve -lQRAlgorithms -lQRPlatform -lQRThreads -lQRXq -lquercus
 SHARED_COPT=-fPIC -shared
 SHARED_LDOPT=-shared -dy
-CFLAGS=$(COPT) $(PROFOPT) -pipe -W -Wall -Wshadow -Wpointer-arith -Wwrite-strings -Wconversion -Wstrict-prototypes -Wmissing-prototypes -Woverloaded-virtual -Winline -Wformat -Wconversion -Wsynth -ansi -pedantic #-Wcast-qual -Wcast-align -Wenum-clash -Waggregate-return -Wredundant-decls -Weffc++  -Wtraditional -Wid-clash-24 -Wmissing-declarations -Wnested-externs -Wbad-function-cast
+CFLAGS=$(COPT) $(PROFOPT) -pipe -w
+#CFLAGS=$(COPT) $(PROFOPT) -pipe -W -Wall -Wshadow -Wpointer-arith -Wwrite-strings -Wconversion -Wstrict-prototypes -Wmissing-prototypes -Woverloaded-virtual -Winline -Wformat -Wconversion -Wsynth -ansi -pedantic #-Wcast-qual -Wcast-align -Wenum-clash -Waggregate-return -Wredundant-decls -Weffc++  -Wtraditional -Wid-clash-24 -Wmissing-declarations -Wnested-externs -Wbad-function-cast
 LDFLAGS=$(PROFOPT) #-static
 
 ###########################################################################
@@ -237,7 +238,7 @@ CPP_SRC= \
   ###########################################################################
 
 INCS=-I. -I$(INC_DIR) $(ADDITIONAL_INCS) \
-	-I/home/nikita/projects/quercus-0.0.4/inc -I/home/nikita/projects/quercus-0.0.4/
+	-I$(QHOME)/inc -I$(QHOME)
 ALL_SOURCE=$(CPP_SRC) $(CPP_IPP) $(CPP_TPP)
 CPP_OBJ=$(CPP_SRC:.cpp=.o)
 CPP_SOBJ=$(CPP_SRC:.cpp=.so)

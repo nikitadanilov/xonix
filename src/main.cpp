@@ -15,7 +15,7 @@ static char debugFileId[] = __FILE__;
 
 namespace QR {
 
-int QR::QRMain( QR::List *anArgs )
+int QRMain( QR::List *anArgs )
 {
   GameManager *manager;
 
