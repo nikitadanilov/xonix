@@ -10,6 +10,8 @@ static char debugFileId[] = __FILE__;
 #if defined( XONIX_USE_XQ ) || defined( XONIX_USE_CQ )
 #include <sys/time.h>
 #include <stdlib.h>
+#include <fcntl.h>
+#include <unistd.h>
 
 #include "ACursor.hpp"
 #endif
@@ -84,6 +86,7 @@ Game::Game( GameConfig *aConfig )
   clinamenaPromille = config -> clinamenaPromille;
 
 #if defined( XONIX_USE_CQ )
+  redirectLog();
   QR::Cq::initClass();
   FINIT( board, new Board( this, 
 						   QR::Cq::CursesUI::getScreenHeight() - 2, 
@@ -242,6 +245,34 @@ Game::~Game()
 }
 
 #if defined( XONIX_USE_CQ )
+
+/*
+  Quercus traces go to stderr. When stderr is the terminal curses draws
+  on, they corrupt the display, so send them to config -> logFile
+  (or discard them if it cannot be opened).
+*/
+void Game::redirectLog()
+{
+  int fd;
+  char *fileName;
+
+  if( !isatty( STDERR_FILENO ) )
+	{
+	  return;
+	}
+  fileName = config -> logFile.getChars();
+  fd = open( fileName, O_WRONLY | O_CREAT | O_APPEND, 0644 );
+  delete []fileName;
+  if( fd == -1 )
+	{
+	  fd = open( "/dev/null", O_WRONLY );
+	}
+  if( fd != -1 )
+	{
+	  dup2( fd, STDERR_FILENO );
+	  close( fd );
+	}
+}
 
 void Game::initCursesGraphics()
 {

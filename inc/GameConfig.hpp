@@ -72,6 +72,8 @@ public: QR::String fg;
 public: QR::String pg;
 public: QR::String pl;
 
+public: QR::String logFile;
+
 public: Index clinamenaLevel;
 public: Index clinamenaPromille;
 

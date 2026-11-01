@@ -3,3 +3,4 @@ old-build/
 xonix.x11
 xonix.curses
 .agent-shell/
+xonix.log

@@ -125,6 +125,7 @@ protected: COLORREF fg;
 #if defined( XONIX_USE_CQ )
 
 protected: void initCursesGraphics();
+protected: void redirectLog();
 protected: void initCursesGlyphs();
 
 public: QR::Cq::Window   *window;

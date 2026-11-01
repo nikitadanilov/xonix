@@ -72,6 +72,8 @@ GameConfig::GameConfig()
   pg = "gray";
   pl = "red";
 
+  logFile = "./xonix.log";
+
   clinamenaLevel = 4;
   clinamenaPromille = 2;
 }
@@ -139,6 +141,8 @@ GameConfig::GameConfig( const GameConfig &aSource )
   fg = aSource.fg;
   pg = aSource.pg;
   pl = aSource.pl;
+
+  logFile = aSource.logFile;
 
   clinamenaLevel = aSource.clinamenaLevel;
   clinamenaPromille = aSource.clinamenaPromille;
@@ -259,6 +263,10 @@ void GameConfig::init( QR::List *anArgs )
   options -> append( new StringOption
 					 ( "display", "display", "XONIX_DISPLAY", 
 					   "Display to draw on", &display ) );
+  options -> append( new StringOption
+					 ( "log", "-log", "XONIX_LOG", 
+					   "Trace file used when curses owns the terminal", 
+					   &logFile ) );
 
   options -> append( new StringOption
 					 ( "normalCursorPattern", "-normal-cursor-pattern", 
