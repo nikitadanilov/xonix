@@ -283,6 +283,8 @@ void Game::initCursesGraphics()
 		   QR::Cq::CursesUI::getScreenWidth(), QR::Cq::CursesUI::getScreenHeight() ) );
   window -> dontManage();
   window -> setProtector( THR_SYSTEM -> recMutex() );
+  /* keys are read from this window: decode arrows into KEY_* codes */
+  keypad( window -> getCWin(), true );
 
   FINIT( map, new BoardMap( board, 1, 1, 0 ) );
   map -> dontManage();
