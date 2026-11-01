@@ -17,9 +17,12 @@
 //#define XONIX_USE_XQ
 #endif
 
+/* Back-end is selected by the Makefile (-DXONIX_USE_XQ or -DXONIX_USE_CQ);
+   X11 is the default. */
+#if !defined( XONIX_USE_XQ ) && !defined( XONIX_USE_CQ ) && \
+    !defined( XONIX_USE_WQ )
 #define XONIX_USE_XQ
-
-//#define XONIX_USE_CQ
+#endif
 
 using QR::Debug;
 using QR::ThreadFactory;

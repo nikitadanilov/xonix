@@ -1,4 +1,5 @@
 obj/
 old-build/
-xonix
+xonix.x11
+xonix.curses
 .agent-shell/
